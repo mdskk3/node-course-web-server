@@ -22,9 +22,9 @@ app.use((req, res, next) => {
   //without next call the next set of handler will not execute
 });
 
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-})
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs');
+// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -48,13 +48,19 @@ app.get('/about', (req,res) => {
   res.render('about.hbs', {
     pageTitle: 'About Page',
   });
-})
+});
+
+app.get('/projects', (req,res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Project Page',
+  });
+});
 
 app.get('/bad', (req,res) => {
   res.send({
     errorMessage: 'Unavialble to serve request'
   });
-})
+});
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
